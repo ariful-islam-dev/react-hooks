@@ -1,5 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { Button } from 'reactstrap';
+import { UserContext } from './userContext';
 
 const MyHook = () => {
     const [count, setCount] = useState(0);
@@ -16,7 +17,6 @@ const MyHook = () => {
 
     useEffect(() => {
         console.log('I have Grown-Up Age', age);
-        // document.title = 'I have Grown-Up Age' + age;
 
     }, [age])
 
@@ -31,6 +31,9 @@ const MyHook = () => {
             })
     }, [])
 
+    const { user } = useContext(UserContext)
+
+
     return (
         <div>
             <h3>I am hook , I am awesome</h3>
@@ -44,7 +47,13 @@ const MyHook = () => {
                 <h2>My Age is {age}</h2>
                 <Button color='secondary' onClick={() => setAge(prev => prev + 1)}>Incerment Age</Button>
             </div>
-
+            <hr />
+            <div>
+                <h3>I am {user.name}</h3>
+                <h3>My Email Is {user.email}</h3>
+                <ul>{user.languages  && user.languages.map((lan, id) => <li key={id}>{lan}</li>)}</ul>
+            </div>
+            <hr />
             <div>
                 {Object.keys(post).length > 0 && (
                     <Fragment>
