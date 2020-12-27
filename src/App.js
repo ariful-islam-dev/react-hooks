@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
+import "./App.scss";
+import MyHook from "./components/Hooks";
+import { UserProvider } from "./components/userContext";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <Container>
+        <Row>
+          <Col sm={{ size: 12}}>
+            <h1 className="mt-3">React Hooks - Crash Course</h1>
+            <MyHook />
+          </Col>
+        </Row>
+      </Container>
+    </UserProvider>
   );
-}
+};
 
 export default App;
